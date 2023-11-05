@@ -1,0 +1,38 @@
+
+
+.div-map{
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;
+
+}
+
+.add-button{
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;
+  margin-top: 2%;
+}
+
+.small-table {
+  max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto;
+}
+
+.small-table th, .small-table td {
+  padding: 5px; /* Reducción del espaciado */
+}
+
+.div-table{
+  width: 50%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin-left: 25%;
+  margin-top: 2%;
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+

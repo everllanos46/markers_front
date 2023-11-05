@@ -1,0 +1,18 @@
+<div>
+  <select [(ngModel)]="selectedYear" (change)="updateTable()">
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+  </select>
+</div>
+
+<table class="small-table">
+  <tr>
+    <th>Mes</th>
+    <th>Cantidad de Ventas</th>
+    <th>Total de Ventas</th>
+  </tr>
+  <tr *ngFor="let result of results">
+    <td>{{ result.anio }}-{{ result.mes }}</td>
+    <td>{{ result.cantidadVentas }}</td>
+    <td>{{ result.totalVentas }}</td>
+  </tr>
+</table>

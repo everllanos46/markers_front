@@ -1,0 +1,52 @@
+.example-card {
+  max-width: 35%;
+  max-height: 5%;
+  text-align: center;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+mat-card-header {
+  display: block;
+}
+
+mat-tab::ng-deep .mat-tab-body-wrapper {
+  overflow: hidden !important;
+}
+
+.tab-class {
+  overflow: hidden;
+}
+
+.tittle {
+  text-align: center !important;
+}
+
+.example-full-width {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.mat-button {
+  margin-top: 10px;
+  width: 100%;
+  color: white;
+  height: 40px;
+  background-color: #3F51B5;
+}
