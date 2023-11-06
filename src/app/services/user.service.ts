@@ -29,6 +29,10 @@ export class UserService {
     }));
   }
 
+  create(user:any): Observable<any> {
+    return this.http.post<any>(ruta + "user/create", user).pipe(tap(() => console.log("Creado correctamente")));
+  }
+
   public get currentTokenValue(): string {
     return this.currentToken.value;
   }

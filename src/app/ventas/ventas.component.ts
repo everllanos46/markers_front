@@ -8,14 +8,14 @@ import { Project } from '../models/project';
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent implements OnInit {
-  projects: any[]=[];
+  projects: any[] = [];
   filteredTableData: any[] = [];
   selectedYear: number = 2023;
   years: number[] = [];
   tableData: any[] = [];
   results: any[] = [];
 
-  constructor(private projectService: ProjectService){}
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.fillYears();
@@ -32,9 +32,10 @@ export class VentasComponent implements OnInit {
     }
   }
 
-  get(){
-    this.projectService.getDataYear(this.selectedYear).subscribe((data)=>{
-      console.log(data)
+  get() {
+    this.projects = [];
+    this.results = [];
+    this.projectService.getDataYear(this.selectedYear).subscribe((data) => {
       this.projects = data;
       const proyectosAgrupados = this.projects.reduce((result, proyecto) => {
         const fechaCreacion = new Date(proyecto.date);
@@ -49,6 +50,7 @@ export class VentasComponent implements OnInit {
             mes,
             totalVentas: 0,
             cantidadVentas: 0,
+            name: this.returnMonthName(mes)
           };
         }
 
@@ -64,16 +66,36 @@ export class VentasComponent implements OnInit {
     });
   }
 
+  returnMonthName(monthNumber: number) {
+    switch (monthNumber) {
+      case 1:
+        return "Enero";
+      case 2:
+        return "Febrero";
+      case 3:
+        return "Marzo";
+      case 4:
+        return "Abril";
+      case 5:
+        return "Mayo";
+      case 6:
+        return "Junio";
+      case 7:
+        return "Julio";
+      case 8:
+        return "Agosoto";
+      case 9:
+        return "Septiembre";
+      case 10:
+        return "Octubre";
+      case 11:
+        return "Noviembre";
+      default:
+        return "Diciembre";
+    }
+  }
+
   updateTable(): void {
-
-    const filteredData = this.tableData.filter((item) => {
-      const itemDate = new Date(item.fecha);
-      const itemYear = itemDate.getUTCFullYear();
-      const itemMonth = itemDate.getUTCMonth() + 1; 
-      return itemYear === this.selectedYear;
-    });
-
-
-    this.filteredTableData = filteredData;
+    this.get();
   }
 }

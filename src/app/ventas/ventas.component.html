@@ -1,18 +1,28 @@
 <div>
-  <select [(ngModel)]="selectedYear" (change)="updateTable()">
-    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-  </select>
+  <mat-form-field>
+    <mat-label>Mes</mat-label>
+    <mat-select [(ngModel)]="selectedYear" (selectionChange)="updateTable()">
+      <mat-option *ngFor="let year of years" [value]="year">
+        {{year}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
 
-<table class="small-table">
-  <tr>
-    <th>Mes</th>
-    <th>Cantidad de Ventas</th>
-    <th>Total de Ventas</th>
-  </tr>
-  <tr *ngFor="let result of results">
-    <td>{{ result.anio }}-{{ result.mes }}</td>
-    <td>{{ result.cantidadVentas }}</td>
-    <td>{{ result.totalVentas }}</td>
-  </tr>
+<table mat-table [dataSource]="results" class="small-table ">
+  <ng-container matColumnDef="anio-mes">
+    <th mat-header-cell *matHeaderCellDef>Mes</th>
+    <td mat-cell *matCellDef="let result">{{ result.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="cantidadVentas">
+    <th mat-header-cell *matHeaderCellDef>Cantidad de Ventas</th>
+    <td mat-cell *matCellDef="let result">{{ result.cantidadVentas }}</td>
+  </ng-container>
+  <ng-container matColumnDef="totalVentas">
+    <th mat-header-cell *matHeaderCellDef>Total de Ventas</th>
+    <td mat-cell *matCellDef="let result">{{ result.totalVentas }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['anio-mes', 'cantidadVentas', 'totalVentas']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['anio-mes', 'cantidadVentas', 'totalVentas']"></tr>
 </table>

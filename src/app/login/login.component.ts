@@ -13,7 +13,6 @@ export class LoginComponent {
   remail: string = "";
   ruser: string = "";
   rpassword: string = "";
-  rcpassword: string = "";
 
   constructor(private userService: UserService, private router: Router) {
 
@@ -30,5 +29,8 @@ export class LoginComponent {
   }
 
   register() {
+    this.userService.create({username: this.ruser, email: this.remail, password: this.rpassword}).subscribe(data=>{
+      console.log(data);
+    });
   }
 }
